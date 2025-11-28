@@ -1,0 +1,16 @@
+
+Secure footer 
+    Variants  
+        1. Extensive
+        2. Secure (Limited)
+
+    Note:
+    1. Both have key similarities 
+
+    Solutions
+        1. Json(DATA) structure
+        2. Destructured components 
+        3. Both - (In favour of this Solution)
+            * Clean code 
+            * Allow for the project team in the future to use components as desires if json doesn't match 
+                their required behavior.

@@ -1,0 +1,32 @@
+
+
+Solutions
+
+    1 . Uncoupled Table - similar to sematic table default using react boostrap
+
+        This requires a sample of the diffrent table to be displaced based on figma 
+        designs
+
+        Perks
+            1. gives flexiblity to create anything to users
+
+        Disadvantages
+            1. helper function have to be provided on how to handle pagination, sorting, filtering
+            and any advance functionality.
+            2. leave room for developer to misuse component if so desired
+
+    2. Object formated table - 
+
+        This requies the user to pass in an array of object for containing row and column cnotainging the
+        diffrent helper functions
+
+        Perks
+            1. Encapsulation and Clean code
+            2. Less room for error 
+            3. futuer changes are hidden to the users
+
+        Disadvantages
+            1. Slight learning curve for component user
+            2. might require user to format their object before using component 
+             
+             

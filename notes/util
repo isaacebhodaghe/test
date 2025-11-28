@@ -1,0 +1,28 @@
+📦  📂  📜
+┣
+┗
+┃
+
+
+
+Sample 
+📦quakehunter
+ ┣ 📂client
+ ┣ 📂node_modules
+ ┣ 📂server
+ ┃ ┗ 📜index.js
+ ┣ 📜.gitignore
+ ┣ 📜package-lock.json
+ ┗ 📜package.json--styles
+
+📦styles
+ ┣ 📂storybook
+ ┃ ┗ base.scss
+ ┣ 📂conmponents
+ ┣ 📂print
+ ┣ 📂layout
+ ┣ 📂base
+ ┣ 📜candela-palette.scss
+ ┗ 📜sl-colors.css
+
+ 

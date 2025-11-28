@@ -1,0 +1,138 @@
+Radio button action plan
+
+REACT
+
+Folder structure
+
+📂sl-radio
+┃   📂sl-radio
+┃   ┣ 📜index.js[x]
+┃   ┣ 📜sl-radio.stories.js
+┃   ┣ 📜sl-radio.usage.js
+┃   ┗ 📜sl-radio.test.js
+┃   📂sl-input-group
+┃   ┣ 📜index.js[x]
+┃   ┣ 📜sl-radio-group.stories.js
+┃   ┣ 📜sl-radio-group.usage.js
+┃   ┗ 📜sl-radio-group.test.js
+
+
+
+📂sl-radio
+    ┣ 📜index.js[x]
+    ┣ 📜sl-radio.stories.js
+    ┣ 📜sl-radio.usage.js
+    ┗ 📜sl-radio.test.js
+
+📜 index.js[x]
+
+    - import the react-bootstrap From.radio
+        - https://react-bootstrap.github.io/forms/checks-radios/ 
+    - import required stylesheet
+    
+    - Wrapper and pass props directly into the component. (keeps story clean)
+    
+    - Component props
+        - external
+            name        -  [group key]
+            id          -  [unique key]
+            label       -  [string]
+            value       -  [label, unique key] 
+            inline      -  [boolean]
+            disabled    -  [boolean]
+            isInvalid   -  [boolean]
+        - internal
+            type       -  [radio]
+            classname  -  [sl-radio]
+
+
+📜 sl-radio.stories.js
+    - args
+        name        -  [group key]
+        id          -  [unique key]
+        label       -  [string]
+        value       -  [label, unique key] 
+        inline      -  [boolean]
+        disabled    -  [boolean]
+        isInvalid   -  [boolean]
+    
+    - stories
+        Radio Button - default
+        usage
+        Disabled Radio Button   -  Disabled
+        Invalid Radio Button    -  Invalid
+        Stacked Radio           -  Stacked                         
+        Inline Radio            -  Inlined
+
+    - usage 
+        sl-radio.usage.js   
+
+📜 sl-radio.usage.js
+    - basic usage details
+        - import candela and react-bootstrap
+    
+    <SLRadio
+        name
+        id       
+        label    
+        value    
+        inline   
+        disabled 
+        isInvalid
+    >
+
+📜 sl-radio.test.js
+    - cases
+         - Should render radio button
+         - Should render radio button with assigned label with value defaulted to label
+         - Should render radio button with assigned label and value
+         - Should render radion button in disabled state
+
+
+INPUT GROUP
+
+📂sl-radio-group
+    ┣ 📜index.js[x]
+    ┣ 📜sl-radio-group.stories.js
+    ┣ 📜sl-radio-group.usage.js
+    ┗ 📜sl-radio-group.test.js
+
+
+📜 index.js[x]
+     - import required stylesheet
+
+     - Component props
+        - external
+            label       -  [group key]
+            children    -  [radio buttons]
+        - internal
+            classname  -  [sl-radio]
+
+
+📜 sl-radio-group.usage.js
+        <SLInputGroup label="Group Label">
+            <SLRadio>
+            <SLRadio>
+            <SLRadio>
+            <SLRadio>
+        </SLInputGroup>
+
+        <SLInputGroup label="Group Label">
+            <SLCheck>
+            <SLCheck>
+            <SLCheck>
+            <SLCheck>
+        </SLInputGroup>
+
+        
+📜 sl-radio.test.js
+    - cases
+        - Should render radio button group label
+        - Should render radio button group with all children
+        - Should render radio button group with all children props correct
+
+
+
+
+HTML
+

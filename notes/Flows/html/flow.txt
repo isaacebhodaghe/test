@@ -1,0 +1,33 @@
+class ComonentName {
+  constructor(){...}
+
+  someFunction(){...}
+}
+
+
+const componentName = function () {...}
+
+componentName.prototype.init = function (){...}
+
+
+
+
+const componentName ={
+   
+  init(){
+    ...
+  }
+
+  someFunction(){...}
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const accordionItems = document.querySelectorAll(
+    '[data-sl-component="componentName"]'
+  );
+
+  for (const item of someItems) {
+    new componentName();
+  }
+});

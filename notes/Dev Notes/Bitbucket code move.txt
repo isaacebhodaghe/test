@@ -1,0 +1,95 @@
+Goal 
+
+    Move repo current repo with all branches over to new UI CICD repo without tags
+
+
+Problem 
+
+    Resolving SSL Self-Signed Certificate Errors
+
+    Solution - https://confluence.atlassian.com/bitbucketserverkb/resolving-ssl-self-signed-certificate-errors-806029899.html
+
+important links
+    Old Repo - https://bitbucket.sunlifecorp.com/scm/ui_components/web-jslib-react.git
+    New Repo -  
+
+Process 
+
+
+    Transfer code - https://www.atlassian.com/git/tutorials/git-move-repository
+
+        git clone [repositoryUrl] --no-tags
+
+        git checkout [all branches]
+
+        git remote rm origin
+
+        git remote -v
+
+        git remote add origin [url to NEW repo]
+
+        git push origin --all
+
+
+
+
+
+
+All branches
+
+git checkout origin/Doc-gen-poc
+git checkout Doc-gen-poc
+
+git checkout origin/feature/CADEO-5079-EllaAlertZone
+git checkout feature/CADEO-5079-EllaAlertZone
+
+git checkout origin/feature/CDT-477-Button-add-to-library-regression
+git checkout feature/CDT-477-Button-add-to-library-regression
+
+git checkout origin/feature/CDT-495-eye-icon-bug
+git checkout feature/CDT-495-eye-icon-bug
+
+git checkout origin/feature/CDT-508-tokenization-investigation      
+git checkout feature/CDT-508-tokenization-investigation      
+
+git checkout origin/feature/CDT-766
+git checkout feature/CDT-766
+
+git checkout origin/feature/CDT-803
+git checkout feature/CDT-803
+
+git checkout origin/feature/DADOO-2243
+git checkout feature/DADOO-2243
+
+git checkout origin/feature/DADOO-2274
+git checkout feature/DADOO-2274
+
+git checkout origin/feature/DADOO-2343
+git checkout feature/DADOO-2343
+
+git checkout origin/feature/DADOO-2364
+git checkout feature/DADOO-2364
+
+git checkout origin/feature/pipeline-check
+git checkout feature/pipeline-check
+
+git checkout origin/feature/pipeline-sandbox
+git checkout feature/pipeline-sandbox
+
+git checkout origin/feature/pipeline-sandbox-base
+git checkout feature/pipeline-sandbox-base
+
+git checkout origin/feature/pipeline-sandbox-versioning
+git checkout feature/pipeline-sandbox-versioning
+
+git checkout origin/feature/releasebuildTest
+git checkout feature/releasebuildTest
+
+git checkout origin/feature/sharedLibrary
+git checkout feature/sharedLibrary
+
+git checkout origin/master
+git checkout master
+
+git checkout origin/develop
+git checkout develop

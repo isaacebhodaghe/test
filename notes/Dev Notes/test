@@ -1,0 +1,75 @@
+import {
+  act,
+  renderHook,
+  screen,
+  render,
+  cleanup,
+} from '@testing-library/react';
+import React from 'react';
+import useMediaQuery from './useMediaQuery';
+
+describe('useMediaQuery', () => {
+  describe('without window.matchMedia', () => {
+    let originalMatchmedia;
+    beforeEach(() => {
+      originalMatchmedia = window.matchMedia;
+      delete window.matchMedia;
+    });
+    afterEach(() => {
+      window.matchMedia = originalMatchmedia;
+    });
+
+    test('should return false if window.matchMedia isn`t available', () => {
+      expect(typeof window.matchMedia).toBe('undefined');
+      function Test() {
+        const matches = useMediaQuery('(min-width:100px)');
+        return <span data-testid="matches">{`${matches}`}</span>;
+      }
+
+      render(<Test />);
+      expect(screen.getByTestId('matches').textContent).toBe('false');
+    });
+  });
+
+  describe('with window.matchMedia', () => {
+    beforeAll(() => {
+      Object.defineProperty(window, 'matchMedia', {
+        writable: true,
+        value: jest.fn().mockImplementation((query) => {
+          const instance = {
+            matches: false,
+            media: query,
+            onchange: null,
+            addListener: jest.fn(), // Deprecated
+            removeListener: jest.fn(), // Deprecated
+            addEventListener: jest.fn(),
+            removeEventListener: jest.fn(),
+            dispatchEvent: jest.fn(),
+          };
+
+          return instance;
+        }),
+      });
+    });
+
+    test('should first', () => {
+      // sample component
+      const Test = () => {
+        const matches = useMediaQuery('(min-width:400px)');
+        return <span data-testid="matches">{`${matches}`}</span>;
+      };
+
+      console.log(window.matchMedia('(min-width:400px)'));
+
+      render(<Test />);
+
+      // Change the viewport to 500px.
+      global.innerWidth = 500;
+
+      // Trigger the window resize event.
+      global.dispatchEvent(new Event('resize'));
+
+      // console.log(screen.getByTestId('matches').textContent);
+    });
+  });
+});

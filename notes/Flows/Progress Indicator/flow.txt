@@ -1,0 +1,21 @@
+
+
+Structure
+
+    Label
+
+    Progress Label (text)
+
+    Progress indicator (animation) 
+
+
+Use cases
+
+    Forms
+        * Required to be within a modal 
+
+    Loading States
+        * default progress indicator
+
+Solution 
+    1. 

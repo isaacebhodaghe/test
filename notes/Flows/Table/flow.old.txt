@@ -1,0 +1,43 @@
+<Table>
+    <head>
+
+    </head>
+    <body>`
+        <row variant="heading">
+            <td colspan="{3}">Heading</td>
+        </row>
+        <row >
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </row>
+        <row variant="heading">
+            <td >Heading</td>
+        </row>
+    </body>
+</Table>
+
+
+[
+    {
+        id:'',
+        title:'',
+        summary
+        total:'',
+        spanRule:''
+        rows:[
+            {
+                actiivity:'',
+                member:'',
+                employer:'',
+                openingValue:'',
+                row:[{
+
+                }]
+            }
+        ]
+    }
+]
+
+<Table data="[{}]" variant="banking-hub"></Table>

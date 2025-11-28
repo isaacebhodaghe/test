@@ -1,0 +1,84 @@
+import React from 'react';
+
+import CodeSection from '../../../../../others/code-section';
+
+import {
+  Title,
+  Subtitle,
+  Description,
+  Primary,
+  ArgsTable,
+  Stories,
+  PRIMARY_STORY,
+} from '@storybook/addon-docs';
+import Radio from '../../Radio/Radio';
+
+const RadioUsage = () => {
+  return (
+    <div>
+      <div className="mx-3 my-3 px-3 py-3">
+        <p>
+          <strong>Step 1: Load stylesheet</strong>
+        </p>
+        <div>
+          <ul>
+            <li>
+              Follow the{' '}
+              <i>
+                <strong>Getting Started</strong>
+              </i>{' '}
+              tab to install the SASS library and import the necessary file.
+            </li>
+            <li>
+              Import <code>sl-forms.scss</code> to your main scss file.
+              <CodeSection code='@import "~candela-sass/components/sl-forms.scss";' />
+              This will load the required styling.
+            </li>
+          </ul>
+        </div>
+        <p>
+          <strong>Step 2: </strong>Install react component library from artifact
+          (this long url will change in future)
+        </p>
+        <CodeSection code="npm install https://artifactory.sunlifecorp.com/artifactory/npm-all/react-candela/-/react-candela-0.2.0-dev.79.uncommitted.tgz" />
+        <p>
+          <strong>
+            Step 3: Import a desired component from the component library inside
+            your js (follow the Components section to see the list of React
+            components)
+          </strong>
+        </p>
+        <div>
+          <ul>
+            <li>
+              Import <code>InputGroup</code> to your react component from
+              Helios.
+              <CodeSection code='import InputGroup from "react-candela";' />
+              This will load the InputGroup component from helios.
+            </li>
+            <li>
+              Go to the{' '}
+              <i>
+                <strong>Docs</strong>
+              </i>{' '}
+              tab from the top panel of Storybook and then scroll to the story
+              of the component that you want to use. Click on 'Show code' to
+              reveal and copy the code to your project.
+            </li>
+          </ul>
+          Read more about React Bootstrap Checkbox{' '}
+          <a href="https://react-bootstrap.github.io/forms/checks-radios/#checks-and-radios">
+            here
+          </a>
+          .
+        </div>
+      </div>
+      <p>
+        <strong>Available Props</strong>
+      </p>
+      <ArgsTable of={Radio} />
+    </div>
+  );
+};
+
+export default RadioUsage;

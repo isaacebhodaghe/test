@@ -1,0 +1,89 @@
+
+
+< 1 ... 4  5  6 ... 10 >
+
+BASIC
+
+
+    <Pagination
+        id
+        variant='basic' |'advanced'
+        backLabel="Previous page"
+        forwardLabel="Next page"
+        onChange={({pageIndex})=>{}}
+        page={1}
+        itemsPerPage={10} // which mean 10 pages in total
+        totalItems={100}
+        count={100/10} //  internal prop -- ignore
+        isLoadMore
+    />
+
+
+
+ADVANCED 
+
+    <Pagination
+        id
+        variant='basic' |'advanced'
+        backLabel="Previous page"
+        forwardLabel="Next page"
+        firstPageLabel="First Page"
+        lastPageLabel="Last Page"
+        rowsPerPageLabel="Items per page:"
+        onChange={()=>{}}
+        page={1}
+        totalItems={100}
+        itemsPerPage={10 | [10,20,30, {label:'All',value:-1}]}
+        showGoto={true}
+        showRowsPerPage={false}
+        onRowsPerRowChange={(rowsPerPage)=>{}}
+    />
+
+
+const Pagination =  (props) =>{
+    return(
+        <>
+            isBasic   && <BasicPagination {...props}/>
+            isAdvance && <AdvancedPagination {...props}/>
+            isMobile  && <LoadMorePagination {...props}/>
+        </>
+    )
+}
+ 
+
+
+Consideration
+
+1. Should the pagination button be a link always or should default as a button and have option for link
+
+    Solution
+        * if link prop isn't provided it should default to button.
+         <Pagination
+           {...props}
+           link={({pageIndex})=>'https://.../${pageIndex}'}
+        />
+
+
+2. Should Toast component for LoadMore be embedded in the Pagination component 
+
+    Solution -- 
+
+        -- IF YES 
+        * give a callback function that is called when the toast is closed. This way project team can handle
+            focus behavior on that call.
+        
+         <Pagination
+           {...props}
+           onAlertClosed={()=>{}}
+        /> 
+
+        -- IF NO
+        * when onChange() is called the project team would handle the logic to show the Toast Component 
+        and handle the callback function from the Toast component similarly to Above solution
+
+        <Pagination
+            {...props}
+            onChange={()=>{}}
+        /> 
+        { showToast && <Toast onClose={()=>{}}/> } 
+

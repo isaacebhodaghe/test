@@ -1,0 +1,209 @@
+
+
+Variants
+
+
+Structure 
+    1. (Row per page - control) Label and dropdown 
+    2. Row Range
+    3. Pagination controls 
+    4. (Goto Page - control) Label and dropdown 
+
+
+Accessibility consideration 
+    1. Screen reader text for each label and control 
+       { backLabel, forwardLabel, firstPageLabel, lastPageLabel }
+    
+    2. Table pagination should be in a <tfoot/> tag for table accessibility controls
+        to work seamlessly.
+        
+        Pros
+            * TablePagination can interact  
+
+        Cons 
+            * in order to create a land mark <nav/> will have to be in a <td/>
+
+        Solutions
+            1.  <Table {...}>
+                    <TablePagination {...}/>
+                </Table>
+
+            2.  <Table                       
+                    {...tableProps}
+                    pagination={        // Takes a component to be render as <tfoot/> children
+                        <TablePagination {...}/>
+                    }
+                />
+            
+            3. <Table
+                    {...tableProps}
+                    {...tablePaginationProps}
+                />
+
+    3.   
+
+Solutions 
+
+    Structure
+    
+        <TablePagination
+            id
+            variant='basic' |'advanced'
+            backLabel="Previous page"
+            forwardLabel="Next page"
+            firstPageLabel="First Page"
+            lastPageLabel="Last Page"
+            rowsPerPageLabel="Items per page:"
+            onChange={()=>{}}
+            page={1}
+            rowsPerPage={10 | [10,20,30, {label:'All',value:-1}]}
+            totalItems={103}
+        />
+
+
+
+Pagination analysis
+
+1. When load more button is clicked, where is the focus on ?
+
+    Is it okay to focus on a visually hidden element 
+
+2. When load more is clicked what is displayed. do we just show 5more or separator then 5more. (project team will handle that)
+3. 
+
+<PaginationContext>
+    <Content data={[]}/>
+    <Pagination/>
+<PaginationContext>
+
+
+default = [1,2,3,4,5];
+default = [1,2,3,4,5,{'separator'} 6,7,8,9,10{'separator'},11,12,13,14,15];
+
+
+// DEFAULT PAGINATION
+
+<>
+    <Content data={[]}/>
+    <Pagination/>
+<>
+
+
+[
+    {...}
+    {...}
+    {...}
+    {...}
+    {
+        type:'separator',
+        tabIndex="0"
+    }
+    {...}
+    {...}
+    {...}
+    {...}
+    {
+        type:'separator',
+    }
+].map(items=>(
+    <div>
+        {item.id === separator?(
+            <div ref={ref}/>
+            :(
+
+            )
+        )}
+    </div>
+    <Pagination onPageChange={}/>
+))
+
+
+
+
+TABLE PAGINATION
+
+
+
+default = [1,2,3,4,5];
+default = [1,2,3,4,5,{'separator'} 6,7,8,9,10{'separator'},11,12,13,14,15];
+
+const columns = [
+    {
+        field: 'bank',
+        title: 'Bank',
+        onRender:(row,ref)=>{
+            if(row.type==='separator){
+                ref.focus()
+
+                return (
+                    <div>Hello</div>
+                )
+            }
+        }
+    }
+]
+
+const rows = [{
+    id: 1,
+    type: 'TABLE_SECTION_HEADING',
+    title: 'Defined Contribution Pension Plan (DCPP)',
+    subtitle: 'Subheading lorem ipsum',
+  },
+  {
+    id: 2,
+    bank: '',
+    activity: 'Opening value',
+    member: '$0.00',
+    employer: '$0.00',
+    total: '$0.00',
+  },
+  {
+    id: 3,
+    activity: 'Contribution',
+    member: '$1,500.00',
+    employer: '$1,650.02',
+    total: '$3,150.02',
+  },
+  {
+    id: 4,
+    activity: 'Expenses',
+    member: '-$1.21',
+    employer: '-$1.35',
+    total: '-$2.56',
+  },
+  { id: 5, type: 'TABLE_SECTION_TOTAL', total: 'Total: $3,147.46' },
+  {
+    type:'separator'
+  },
+  {...}
+];
+
+
+const sampleComponent =()=>{
+
+    const handlePageChange = (type:'next-page'|'prev-page'|'first-page'|'last-page'|'page-change', value)=>{
+
+    }
+
+return(
+
+    <Table rows={rows} disableFocus/>
+    <TablePagination onChange={handlePageChange}/>
+    )
+}
+
+
+
+const TablePagination= ({onChange})=>{
+
+    const handleChange = (e)=>{
+        onChange(e)
+    }
+
+    return(
+        <>
+            <input onChange={(e)=>(handleChange(e:'page-change',value:'new-page-index))}/>
+           <Pagination onPageChange={(e)=>handleChange(e)}/>
+        </div>
+    )
+}

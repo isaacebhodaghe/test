@@ -1,0 +1,402 @@
+
+const systemIcons = [
+  'account',
+  'add-circle',
+  'add-coverage',
+  'bars',
+  'bell-no',
+  'bell-yes',
+  'bookmark',
+  'briefcase',
+  'call',
+  'caret-down',
+  'caret-left',
+  'caret-right',
+  'caret-up',
+  'chat',
+  'check-circle',
+  'check',
+  'chevron-circle-down',
+  'chevron-circle-left',
+  'chevron-circle-right',
+  'chevron-circle-up',
+  'chevron-double-left',
+  'chevron-double-right',
+  'chevron-down',
+  'chevron-last-left',
+  'chevron-last-right',
+  'chevron-left',
+  'chevron-right',
+  'chevron-up',
+  'claim-coverage',
+  'close-circle',
+  'contribution',
+  'coverage-card',
+  'coverage-info',
+  'credit',
+  'dental',
+  'disability',
+  'dollar-sign',
+  'drug',
+  'edit',
+  'ellipsis-horizontal',
+  'ellipsis-vertical',
+  'email',
+  'exclamation-circle',
+  'exclamation-triangle',
+  'eye-reveal',
+  'eye-unreveal',
+  'filter',
+  'fitness',
+  'grip-lines',
+  'home',
+  'info',
+  'investment',
+  'language',
+  'location',
+  'lock',
+  'medical',
+  'minus',
+  'minus-circle',
+  'more',
+  'new',
+  'order',
+  'pause',
+  'play',
+  'print',
+  'resources',
+  'search',
+  'settings',
+  'sign-in',
+  'sign-out',
+  'sorting-ascending',
+  'sorting-descending',
+  'sorting-none',
+  'trash',
+  'vision',
+  'volume',
+  'withdraw',
+];
+
+const brandIcons = [
+  'info-accomplishment',
+  'info-achievement-recognition',
+  'info-activity',
+  'info-apply',
+  'info-brace-child',
+  'info-braces',
+  'info-building',
+  'info-build-wealth',
+  'info-buy',
+  'info-calculator',
+  'info-calendar',
+  'info-call',
+  'info-camera',
+  'info-cash-sign',
+  'info-client',
+  'info-clock',
+  'info-closed-mail',
+  'info-connection',
+  'info-consider',
+  'info-conversation',
+  'info-cost',
+  'info-diversity-inclusion-flag',
+  'info-diversity-inclusion',
+  'info-email',
+  'info-emotions-problem',
+  'info-emotions-solution',
+  'info-energy',
+  'info-environment',
+  'info-family-friends',
+  'info-find-advisor',
+  'info-find',
+  'info-globe',
+  'info-ground-breaking',
+  'info-group-plan',
+  'info-growth-development',
+  'info-idea-generation',
+  'info-injury',
+  'info-innovation',
+  'info-investments',
+  'info-layers',
+  'info-leadership',
+  'info-leads-ecommerce',
+  'info-life-insurance',
+  'info-listening-customer-service',
+  'info-listening-ear',
+  'info-local-health',
+  'info-location',
+  'info-manage',
+  'info-medical',
+  'info-meet-advisor',
+  'info-megaphone',
+  'info-mental-wellness',
+  'info-mobile',
+  'info-mortgage',
+  'info-music',
+  'info-networth',
+  'info-notification',
+  'info-office-employee',
+  'info-online',
+  'info-organization',
+  'info-pattern',
+  'info-physical-wellness',
+  'info-presentation',
+  'info-privacy-security',
+  'info-problem',
+  'info-products',
+  'info-reach',
+  'info-resource',
+  'info-results',
+  'info-retire',
+  'info-risk',
+  'info-road-map',
+  'info-sick',
+  'info-social-media',
+  'info-sort',
+  'info-starting',
+  'info-strategy',
+  'info-submit-claim',
+  'info-talk-advisor',
+  'info-target',
+  'info-teamwork-collaboration',
+  'info-travel-luggage',
+  'info-travel-passport',
+  'info-underwriting',
+  'info-video',
+  'info-workplace',
+];
+
+
+// scss
+
+$sl-system-icons-list: (
+  id: 'account',
+),
+(
+  id: 'add-circle',
+),
+(
+  id: 'add-coverage',
+),
+(
+  id: 'bars',
+),
+(
+  id: 'bell-no',
+),
+(
+  id: 'bell-yes',
+),
+(
+  id: 'bookmark',
+),
+(
+  id: 'briefcase',
+),
+(
+  id: 'call',
+),
+(
+  id: 'caret-down',
+),
+(
+  id: 'caret-left',
+),
+(
+  id: 'caret-right',
+),
+(
+  id: 'caret-up',
+),
+(
+  id: 'chat',
+),
+(
+  id: 'check-circle',
+),
+(
+  id: 'check',
+  disableHover: true,
+),
+(
+  id: 'chevron-circle-down',
+),
+(
+  id: 'chevron-circle-left',
+),
+(
+  id: 'chevron-circle-right',
+),
+(
+  id: 'chevron-circle-up',
+),
+(
+  id: 'chevron-double-left',
+),
+(
+  id: 'chevron-double-right',
+),
+(
+  id: 'chevron-down',
+),
+(
+  id: 'chevron-last-left',
+),
+(
+  id: 'chevron-last-right',
+),
+(
+  id: 'chevron-left',
+),
+(
+  id: 'chevron-right',
+),
+(
+  id: 'chevron-up',
+),
+(
+  id: 'claim-coverage',
+),
+(
+  id: 'close-circle',
+),
+(
+  id: 'contribution',
+),
+(
+  id: 'coverage-card',
+),
+(
+  id: 'coverage-info',
+),
+(
+  id: 'credit',
+),
+(
+  id: 'dental',
+),
+(
+  id: 'disability',
+),
+(
+  id: 'dollar-sign',
+),
+(
+  id: 'drug',
+),
+(
+  id: 'edit',
+),
+(
+  id: 'ellipsis-horizontal',
+),
+(
+  id: 'ellipsis-vertical',
+),
+(
+  id: 'email',
+),
+(
+  id: 'exclamation-circle',
+),
+(
+  id: 'exclamation-triangle',
+),
+(
+  id: 'eye-reveal',
+),
+(
+  id: 'eye-unreveal',
+),
+(
+  id: 'filter',
+),
+(
+  id: 'fitness',
+),
+(
+  id: 'grip-lines',
+),
+(
+  id: 'home',
+),
+(
+  id: 'info',
+),
+(
+  id: 'investment',
+),
+(
+  id: 'language',
+),
+(
+  id: 'location',
+),
+(
+  id: 'lock',
+),
+(
+  id: 'medical',
+),
+(
+  id: 'minus',
+  disableHover: true,
+),
+(
+  id: 'minus-circle',
+),
+(
+  id: 'more',
+),
+(
+  id: 'new',
+),
+(
+  id: 'order',
+),
+(
+  id: 'pause',
+),
+(
+  id: 'play',
+),
+(
+  id: 'print',
+),
+(
+  id: 'resources',
+),
+(
+  id: 'search',
+),
+(
+  id: 'settings',
+),
+(
+  id: 'sign-in',
+),
+(
+  id: 'sign-out',
+),
+(
+  id: 'sorting-ascending',
+),
+(
+  id: 'sorting-descending',
+),
+(
+  id: 'sorting-none',
+),
+(
+  id: 'trash',
+),
+(
+  id: 'vision',
+),
+(
+  id: 'volume',
+),
+(
+  id: 'withdraw',
+);

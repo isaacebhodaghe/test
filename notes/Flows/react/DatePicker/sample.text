@@ -1,0 +1,71 @@
+
+Features
+1. input date by typing in text field ['MM/DD/YYYY', 'YYYY年MM月DD日']
+2. masking user date input as they type in
+3. Allow `dateFromNow` and `dateFrom` props - prevents user from selecting a date before current date or a specified date
+4. select date from dropdown date picker
+
+Dropdown features
+1.  Goto next or previous month 
+2.  Goto next or previous year
+3.  Date, month, year toggle (dynamic dropbox)   
+
+
+Structure
+
+<DatePicker 
+    id=""
+    label="Label"
+    placeholder="Please make a selection"
+    value={new Date()}
+    onChange={(event,newValue)=>{}}
+    format='MM/DD/YYYY'
+    disabled={true || false} 
+    helperText=""
+/>
+
+
+In-depth Structure
+
+<DatePicker
+    
+    //CORE
+    id=""
+    label="Label"
+    placeholder="Please make a selection"
+    onChange={(event,newValue)=>{}}
+    helperText=""
+    disabled={true || false} 
+
+    //DATE SPECIFIC
+    format='MM/DD/YYYY'
+    minDate
+    maxDate
+
+    //DROPDOWN SPECIFIC
+    open={true || false}
+    view={'day' || 'month' || 'year'}
+    views=['day','month', 'year']
+
+    {...rest} // root element
+/>
+
+
+Accessibility
+    Can a user tab on the `DatePicker` dropdown (currently W3 and UI components don't allow this)
+
+
+
+Stories Breakdown 
+
+ DatePicker InputField and Masking  - 5
+    Requires reusing TextField component and adding additional functionalities on it, Like 
+        * Masking 
+        * Restyling react-bootstrap placeholder to be visible.
+
+ DatePicker Dropdown in DAY VIEW  - 8
+    * Required converting W3 version to React https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/examples/datepicker-dialog/ 
+    * Styling the React version to match Figma requirements 
+    * Implementing additional Accessibility controls (Home, End , Enter/ Space)
+ 
+ DatePicker Dropdown MONTH VIEW , YEAR VIEW - 5 >

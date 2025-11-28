@@ -1,0 +1,233 @@
+import PropTypes from 'prop-types';
+import React from 'react';
+import classNames from 'classnames';
+
+import BootstrapTable from 'react-bootstrap/Table';
+import { translateAlignment } from '../../utils/componentUtils';
+import useMediaQuery from '../../utils/hooks/useMediaQuery';
+
+const TABLE_SECTION_HEADING = 'TABLE_SECTION_HEADING';
+const TABLE_SECTION_TOTAL = 'TABLE_SECTION_TOTAL';
+
+const typeChecker = (value) => {
+  if (typeof value === 'number') {
+    return `${value}%`;
+  }
+  if (typeof value === 'string') {
+    return value;
+  }
+  return;
+};
+
+const Table = ({ title = undefined, rows, columns, className }) => {
+  const isXs = useMediaQuery('(min-width: 0px)');
+  const isSm = useMediaQuery('(min-width: 600px)');
+  const isMd = useMediaQuery('(min-width: 905px)');
+  const isLg = useMediaQuery('(min-width: 1240px)');
+  const isXl = useMediaQuery('(min-width: 1440px)');
+
+  const handleWidth = (width) => {
+    if (typeof width === 'object' && !Array.isArray(width) && width !== null) {
+      if (isXl) {
+        return getResponsiveWidth('xl', width);
+      } else if (isLg) {
+        return getResponsiveWidth('lg', width);
+      } else if (isMd) {
+        return getResponsiveWidth('md', width);
+      } else if (isSm) {
+        return getResponsiveWidth('sm', width);
+      } else if (isXs) {
+        return getResponsiveWidth('xs', width);
+      }
+
+      return;
+    }
+    return typeChecker(width);
+  };
+
+  const getResponsiveWidth = (query, width) => {
+    const orderBreakpoints = ['xs', 'sm', 'md', 'lg', 'xl'];
+
+    const validCases = orderBreakpoints
+      .slice(0, orderBreakpoints.indexOf(query) + 1)
+      .reverse();
+
+    return validCases.reduce((previousValue, currentValue) => {
+      return previousValue || typeChecker(width[currentValue]);
+    }, undefined);
+  };
+
+  return (
+    <div className={`sl-table ${className || ''}`}>
+      <div className="table-header">
+        {title && <div className="h3">{title}</div>}
+      </div>
+      <BootstrapTable responsive={true}>
+        <thead>
+          <tr>
+            {columns?.map(({ field, title, align = 'left', width }) => (
+              <th
+                key={field}
+                className={`text-${translateAlignment(align)}`}
+                style={{ width: handleWidth(width) }}
+              >
+                {console.log(handleWidth(width))}
+                {title}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows?.map((row, index) => {
+            let isStriped = row?.type === TABLE_SECTION_TOTAL ? 'striped' : '';
+            let isNextEleStriped =
+              index < rows.length - 1 &&
+              rows[index + 1]?.type === TABLE_SECTION_TOTAL
+                ? 'collapsed'
+                : '';
+
+            return (
+              <tr
+                key={row?.id || `tr-${index}`}
+                className={`${isStriped || ''} ${isNextEleStriped || ''}`}
+              >
+                {columns?.map(({ field, align = 'left' }, ind) => {
+                  return (
+                    <React.Fragment key={`${row?.id || index}-${field}`}>
+                      {!row?.type && (
+                        <td className={`text-${translateAlignment(align)}`}>
+                          {row[field] || ''}
+                        </td>
+                      )}
+                      {row?.type && ind === 0 && (
+                        <>
+                          {row?.type === TABLE_SECTION_HEADING && (
+                            <th
+                              colSpan={columns?.length}
+                              className={`text-${translateAlignment(align)}`}
+                            >
+                              <SubText variant="title">{row.title}</SubText>
+                              {row?.subtitle && (
+                                <SubText variant="subtitle">
+                                  {row.subtitle}
+                                </SubText>
+                              )}
+                            </th>
+                          )}
+                          {row?.type === TABLE_SECTION_TOTAL && (
+                            <th
+                              colSpan={columns?.length}
+                              className={`text-${translateAlignment('right')}`}
+                            >
+                              <SubText variant="total">{row.total}</SubText>
+                            </th>
+                          )}
+                        </>
+                      )}
+                    </React.Fragment>
+                  );
+                })}
+              </tr>
+            );
+          })}
+        </tbody>
+      </BootstrapTable>
+    </div>
+  );
+};
+
+Table.propTypes = {
+  /**
+   * Optional table title.
+   */
+  title: PropTypes.string,
+
+  /**
+   *
+   *  <span>An array of object containing properties and function for each column.</span>
+   *
+   */
+  columns: PropTypes.arrayOf(
+    PropTypes.shape({
+      /**
+       * key for specific column
+       */
+      field: PropTypes.string.isRequired,
+
+      /**
+       * Title to display on table head
+       */
+      title: PropTypes.string.isRequired,
+
+      /**
+       * Position to align column content
+       */
+      align: PropTypes.oneOf(['left', 'center', 'right']),
+
+      /**
+       * The width of a column
+       * accepts a number which represent %, or string with px,em...
+       */
+      width: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string,
+        PropTypes.shape({
+          xs: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+          sm: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+          md: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+          lg: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+          xl: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+        }),
+      ]),
+    })
+  ),
+
+  /**
+   * <span>An array of object containing value of each column in a row.</span>
+   *
+   */
+  rows: PropTypes.arrayOf(PropTypes.shape({})),
+
+  /**
+   * Additional className for container.
+   */
+  className: PropTypes.string,
+};
+
+export const SubText = ({
+  children,
+  align = 'left',
+  variant = 'title',
+  className = undefined,
+}) => {
+  let rootClass = classNames({
+    'sl-table-title': variant === 'title',
+    'sl-table-subtitle': variant === 'subtitle',
+    'sl-table-total': variant === 'total',
+    [`text-${translateAlignment(align)}`]: align && align !== 'left',
+    [className]: className,
+  });
+
+  return <span className={rootClass}>{children}</span>;
+};
+
+SubText.propTypes = {
+  /**
+   * Subtext Variants
+   */
+  variant: PropTypes.oneOf(['title', 'subtitle', 'total']),
+
+  /**
+   * horizontal ailign property
+   */
+  align: PropTypes.oneOf(['left', 'center', 'right']),
+
+  /**
+   * Text or element to render
+   */
+  children: PropTypes.node,
+};
+
+Table.SubText = SubText;
+
+export default Table;

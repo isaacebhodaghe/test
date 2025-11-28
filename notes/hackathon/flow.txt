@@ -1,0 +1,23 @@
+title File Upload - UI
+
+participant User
+participant Add File - UI
+participant JS Lib
+participant Upload - UI
+participant API
+participant JAVA Service
+
+User-> Add File - UI: Select a file
+Add File - UI -> JS Lib:  (Check type, size and ext) \nAllow JS Lib user to select the list of acceptable file types 
+Add File - UI <- JS Lib: (Accept or Reject file)
+User <- Add File - UI:    (Show error message or show upload UI )
+note over User, Upload - UI: **Client Side**
+
+User -> Upload - UI: Upload - UI to server
+Upload - UI -> API: API call to server
+API -> JAVA Service: (Library)\n validate, file size, format and headers
+API <- JAVA Service:  OK response with mesasge
+Upload - UI <- API: JSON response with `{okay, message}`
+User <- Upload - UI: Display message and resoponse on the frontend
+
+note over Upload - UI, JAVA Service: **Server Side**

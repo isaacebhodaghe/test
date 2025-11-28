@@ -1,0 +1,30 @@
+
+Deployment Flow
+    1. Push to bitbucket
+    2. Preate a pull request
+    3. Once merge to development branch
+    4. Take the build number from Jenkins
+    5. Type in overrid5 in the token tab of  CDD  and enter the build number from Jenkins
+    6. Click on the run phase button for Dev Deploy
+
+
+LINKs
+
+    Intranet URL : https://intranet.sunnet.ca.sunlife:444/jslib-react/storybook/?path=/docs/components-react-bootstrap-text-field--basic
+
+    SIT URL  :  
+        View : https://sit-www.sunnet.sunlife.com/jslib-slfweb-react/storybook/
+        
+        Login :  https://sit-www.sunnet.sunlife.com/signin/mysunlife/home.wca
+            ID : 160126027534 / password1
+    
+        ---  Use `ctrl + f5` to clear the cache
+
+
+    Jenkins URL : https://jenkins-web.sunlifecorp.com/me/my-views/view/all/job/Web/job/JTE/job/build/job/web-jslib-react/job/develop/
+
+    CDD URL : https://cddirector.io/cdd/releases/31955
+
+    Team Lego Dev Doc Server: http://sv2916.ca.sunlife:5325/web-jslib-react/
+
+    https://linuxize.com/post/how-to-rename-local-and-remote-git-branch/

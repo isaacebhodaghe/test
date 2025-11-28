@@ -1,0 +1,65 @@
+Dropdown solution action plan
+
+REACT
+
+Folder structure
+
+
+Solutions
+
+    # 1 - Using TextField component with Bootstrap Dropdown component. 
+        Requires modifying TextField component allow before/ after icon to be clickable when a click event listner is passed.
+        Restrictions   - requires some additional work to ensure accessiblity works correctly
+    # 2 - Using Boostrap TextField component with only required icon and bootstrap Dropdown component
+        Restrictions   - same as #1
+    # 3 - Using either option #1 or #2 Textfield only with Html Select field 
+        Restrictions - Might have difficulties style some part of the dropdown
+
+
+Implementation plan
+
+📂Dropdown
+┣ 📜index.jsx[x]
+┣ 📜Dropdown.stories.jsx
+┣ 📜Dropdown.usage.jsx
+┗ 📜Dropdown.test.jsx
+
+
+
+
+📜 Dropdown.jsx[x]
+
+    - import the react-bootstrap Dropdown
+        - https://react-bootstrap.github.io/components/dropdowns/
+    - import required stylesheet for dropdown
+    
+    - Wrapper and pass props directly into the component. (keeps story clean)
+    
+    - Component props
+        - external
+           label
+           onClick
+           onChange
+           
+        - internal
+            
+            classname  -  [Dropdown]
+
+
+📜 Dropdown.stories.jsx
+   
+
+    - usage 
+        Dropdown.usage.jsx   
+
+📜 Dropdown.usage.jsx
+    - basic usage details
+        - import candela and react-bootstrap
+    
+  
+
+📜 Dropdown.test.jsx
+    - cases
+        - 
+
+
